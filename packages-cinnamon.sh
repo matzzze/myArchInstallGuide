@@ -5,7 +5,7 @@ if [ "$EUID" -ne 0 ]
         exit
 fi
 
-echo "=====> downloading official packages"
+echo "=====> downloading packages for cinnamon desktop"
 echo
 # requires sudo
 # --noconfirm is used to select all packages from groups
