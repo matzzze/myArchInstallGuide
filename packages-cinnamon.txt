@@ -1,1 +1,7 @@
+xorg-server
+lightdm
+lightdm-gtk-greeter
+lightdm-gtk-greeter-settings
+cinnamon
 arc-gtk-theme
+papirus-icon-theme
