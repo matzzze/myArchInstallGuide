@@ -98,7 +98,7 @@ Now simply connect to the machine via ssh from remote and follow the next steps 
 127.0.1.1	{myhostname}.{mylocaldomain}	{myhostname}
 ```
 **change root passwd**
--run `passwd`
+-run `passwd` and set root password
 
 **Setup initram filesystem**
 - open `etc/mkinitcpio.conf` and look for the section `HOOKS=(base ...`
@@ -114,4 +114,12 @@ Now simply connect to the machine via ssh from remote and follow the next steps 
     - look for the line `GRUB_CMDLINE_LINUX=""` and replace with:
     - `GRUB_CMDLINE_LINUX="cryptdevice=UUID={device-UUID}:{name of mapper} root=/dev/mapper/{name of mapper}"`
     - replace {device-UUID} with the actual device id of the actual root partition that you find in /tmp/ids.txt
-    - replace {name of mapper} with the mapperdevicename that you have set at 
+    - replace {name of mapper} with the mapperdevicename that you have set [here](https://github.com/matzzze/myArchInstallGuide/blob/main/README.md#encrypt-the-root-partition)
+
+**Setup the bootloader for dualboot with Windows**
+
+**Configure & Install Bootloader for NonUEFI**
+- run `grub-install --target=i386-pc --recheck /dev/sda`
+- run `grub-mkconfig --output /boot/grub/grub.cfg`
+
+**Configure & Install Bootloader for UEFI**
