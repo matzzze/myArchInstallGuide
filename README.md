@@ -126,7 +126,7 @@ This only works for UEFI
 - run `passwd` and set root password
 - add user with `useradd -m -g users -G wheel -s /bin/bash {username}`
 - add a password for this user with `passwd {username}`
-- run `visudo` and look for the line `# %wheel ALL=(ALL) ALL` and remove the leading # to let wheel users run sudo commands
+- run `EDITOR=vim visudo` and look for the line `# %wheel ALL=(ALL) ALL` and remove the leading # to let wheel users run sudo commands
 
 
 **Setup initram filesystem**
