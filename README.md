@@ -14,6 +14,7 @@ Now simply connect to the machine via ssh from remote and follow the next steps 
 
 
 #### Prepare the disks by creating partitions UEFI ####
+This only works for UEFI
 - use `lsblk` to check disks and partitions and identify the disk (e.g. /dev/sda or /dev/nvme01...)
 - use cgdisk /dev/{diskname} to make partitioning: `cgdisk /dev/sda`
   1. Create boot partition
@@ -33,7 +34,14 @@ Now simply connect to the machine via ssh from remote and follow the next steps 
 - run "fdisk {disk}" and set the label to dos e.g `fdisk /dev/sda` 
 - hit `o` to create a new edmpty DOS partition table
 - hit `m` to write the partition table
-- the rest is similar as the uefi mode [above](https://github.com/matzzze/myArchInstallGuide/blob/main/README.md#Prepare-the-disks-by-creating-partitions-UEFI)
+- use `cfdisk /dev/sda` to make partitioning
+    1. create boot partition (e.g. 512MB)
+        - Select `New` 
+        - Select `Primary` 
+        - Select `Bootable`
+        - Select `Write`
+    2. create root partition
+        - same as above
 
 
 #### Encrypt the root partition ####
