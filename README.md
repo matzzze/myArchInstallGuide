@@ -3,7 +3,7 @@ Summary of my personal arch installation.
 
 
 ## Preparation
-**Enable to remotely access the target machine during installation**
+#### Enable to remotely access the target machine during installation ####
 1. Check if network access works by running `ip a s` and `ping google`
     - use `wifi-menu` for accessing wireless network
 2. Change the password of root (this is just during the installation) with `passwd`
@@ -13,7 +13,7 @@ Summary of my personal arch installation.
 Now simply connect to the machine via ssh from remote and follow the next steps til reboot
 
 
-**Prepare the disks by creating partitions**
+#### Prepare the disks by creating partitions ####
 - use `lsblk` to check disks and partitions and identify the disk (e.g. /dev/sda or /dev/nvme01...)
 - use cgdisk /dev/{diskname} to make partitioning: `cgdisk /dev/sda2`
   1. Create boot partition
@@ -30,7 +30,7 @@ Now simply connect to the machine via ssh from remote and follow the next steps 
 
 
 
-**Encrypt the root partition**
+#### Encrypt the root partition ####
 1. Encrypt the whole partition with "cryptsetup luksFormat /dev/{rootpartition}"
     - `cryptsetup -y --use-random luksFormat /dev/sda2`
 2. Open the encrypted partion and map it to a mapperdevice with "cryptsetup open /dev/{rootpartition} {name of mapper}"
@@ -40,7 +40,7 @@ Now simply connect to the machine via ssh from remote and follow the next steps 
 
 
 
-**Create filesystem on new partitions**
+#### Create filesystem on new partitions ####
 1. Create filesystem on boot partition with "mkfs.ext4 /dev/{bootpartition}
     - the boot partition has not been encrypted so use the partition right away
     - `mkfs.ext4 /dev/sda1`
@@ -50,7 +50,7 @@ Now simply connect to the machine via ssh from remote and follow the next steps 
 
 
 
-**Mount the new partitions (non UEFI)**
+#### Mount the new partitions (non UEFI) ####
 1. Mount the root partition by "mount /dev/mapper/{name of mapper} /mnt"
     - `mount /dev/mapper/cryptroot /mnt`
 2. Mount the boot partition
@@ -61,6 +61,7 @@ Now simply connect to the machine via ssh from remote and follow the next steps 
 
 
 ## Basic System Installation
+#### Pacstrap & fstab ####
 **Install a reasonable base system with pacstrap**
 - Non-UEFI: 
     - `pacstrap /mnt base base-devel linux linux-headers linux-lts linux-lts-headers linux-firmware vim openssh networkmanager wpa_supplicant wireless_tools netctl dialog grub`
@@ -73,7 +74,7 @@ Now simply connect to the machine via ssh from remote and follow the next steps 
 - automatically generate it for the mounted disks with genfstab
 - `genfstab -U /mnt >> /mnt/etc/fstab`
 
-**Chroot**
+#### Chroot ####
 - use arch-chroot to go into new installed system
 - `arch-chroot /mnt`
 - stay in chroot until guide suggests to exit it
