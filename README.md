@@ -10,7 +10,7 @@ Summary of my personal arch installation.
 3. enable ssh daemon with `systemctl start sshd`
     - verify sshd is running with `systemctl status sshd`
 
-Now simply connect to the machine via ssh from remote
+Now simply connect to the machine via ssh from remote and follow the next steps til reboot
 
 
 **Prepare the disks by creating partitions**
@@ -86,13 +86,31 @@ Now simply connect to the machine via ssh from remote
 **Generate locale**
 - uncomment the necessary locale(s) in `/etc/locale.gen`
 - run `locale-gen` 
-- important: export Language towards `/etc/locale.conf` with `echo "LANG=en_US.UTF-8" >> /etc/locale.conf"
+- important: export Language towards `/etc/locale.conf` with `echo "LANG=en_US.UTF-8" >> /etc/locale.conf"`
 
 **set hostname and add entries to /etc/hosts**
-- run `echo "hostname" >> /etc/hostname`
+- run `echo "{myhostname}" >> /etc/hostname`
 - add to `/etc/hosts` :
 ```
 127.0.0.1	localhost
 ::1		localhost
 127.0.1.1	{myhostname}.{mylocaldomain}	{myhostname}
 ```
+**change root passwd**
+-run `passwd`
+
+**Setup initram filesystem**
+- open `etc/mkinitcpio.conf` and look for the section `HOOKS=(base ...`
+- add the proper hook for encryption by adding `encrypt` to it after `block` and before `filesystems`
+- move the `keyboard` hook between `autodetect` and `modconf` (not sure if this is really necessary)
+- the line should look like this: `HOOKS=(base udev autodetect keyboard modconf block encrypt filesystems fsck)`
+- regenerate initramfs for both kernels with `mkinitcpio -p linux` and `mkinitcpio -p linux-lts`
+
+**Setup the bootloader**
+1. Get the UUIDs with `blkid >> /tmp/ids.txt`
+2. Look for the UUID of the actual root partition (e.g. /dev/sda2) and not the mapped device!
+3. Open the config for grub at `/etc/default/grub`
+    - look for the line `GRUB_CMDLINE_LINUX=""` and replace with:
+    - `GRUB_CMDLINE_LINUX="cryptdevice=UUID={device-UUID}:{name of mapper} root=/dev/mapper/{name of mapper}"`
+    - replace {device-UUID} with the actual device id of the actual root partition that you find in /tmp/ids.txt
+    - replace {name of mapper} with the mapperdevicename that you have set at 
