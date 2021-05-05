@@ -1,5 +1,16 @@
 # myArchInstallGuide
-Summary of my personal arch installation.
+This is a summary of my personal arch installation that aims to easily re-install the system from scratch.
+
+There are several chapters
+1. Preparation
+    - This contains some vital preparation steps like formatting the disks and adding encryption
+    - There is no automation for this at the moment
+2. Basic System Installation
+    - This contains the base system installation
+    - This brings a bootable archlinux with user account running network manager and accessible via ssh
+    - There is no automation for this at the moment
+3. Initial System Setup
+4. 
 
 
 ## Preparation
@@ -111,8 +122,12 @@ This only works for UEFI
 ::1		localhost
 127.0.1.1	{myhostname}.{mylocaldomain}	{myhostname}
 ```
-**change root passwd**
--run `passwd` and set root password
+**change root passwd and add user**
+- run `passwd` and set root password
+- add user with `useradd -m -g users -G wheel -s /bin/bash {username}`
+- add a password for this user with `passwd {username}`
+- run `visudo` and look for the line `# %wheel ALL=(ALL) ALL` and remove the leading # to let wheel users run sudo commands
+
 
 **Setup initram filesystem**
 - open `etc/mkinitcpio.conf` and look for the section `HOOKS=(base ...`
@@ -137,3 +152,14 @@ This only works for UEFI
 - run `grub-mkconfig --output /boot/grub/grub.cfg`
 
 **Configure & Install Bootloader for UEFI**
+
+**Enable Networking and SSHD**
+- run `systemctl enable NetworkManager`
+- run `systemctl enable sshd`
+
+**Finish installation**
+- `exit` to get out of arch-chrooted environment
+- `umount -R /mnt/boot`
+- `umount -R /mnt`
+
+## Initial System Setup
