@@ -10,7 +10,7 @@ There are several chapters
     - This brings a bootable archlinux with user account running network manager and accessible via ssh
     - There is no automation for this at the moment
 3. Initial System Setup
-4. 
+4. Add Cinnamon Desktop
 
 
 ## Preparation
@@ -89,9 +89,9 @@ This only works for UEFI
 #### Pacstrap & fstab ####
 **Install a reasonable base system with pacstrap**
 - Non-UEFI: 
-    - `pacstrap /mnt base base-devel linux linux-headers linux-lts linux-lts-headers linux-firmware vim openssh networkmanager wpa_supplicant wireless_tools netctl dialog grub`
+    - `pacstrap /mnt base base-devel linux linux-headers linux-lts linux-lts-headers linux-firmware vim openssh networkmanager wpa_supplicant wireless_tools netctl dialog grub git`
 - UEFI:
-    - `pacstrap /mnt base base-devel linux linux-headers linux-lts linux-lts-headers linux-firmware vim openssh networkmanager wpa_supplicant wireless_tools netctl dialog grub efibootmgr`
+    - `pacstrap /mnt base base-devel linux linux-headers linux-lts linux-lts-headers linux-firmware vim openssh networkmanager wpa_supplicant wireless_tools netctl dialog grub efibootmgr git`
 - Arch as a virtualbox guest
     - also install `virtualbox-guest-utils`
 
