@@ -163,3 +163,5 @@ This only works for UEFI
 - `umount -R /mnt`
 
 ## Initial System Setup
+### Prepare ###
+**Setup git account**
