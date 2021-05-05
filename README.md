@@ -13,13 +13,13 @@ Summary of my personal arch installation.
 Now simply connect to the machine via ssh from remote and follow the next steps til reboot
 
 
-#### Prepare the disks by creating partitions ####
+#### Prepare the disks by creating partitions UEFI ####
 - use `lsblk` to check disks and partitions and identify the disk (e.g. /dev/sda or /dev/nvme01...)
-- use cgdisk /dev/{diskname} to make partitioning: `cgdisk /dev/sda2`
+- use cgdisk /dev/{diskname} to make partitioning: `cgdisk /dev/sda`
   1. Create boot partition
       - Select `New`
       - Keep the first sector that is shown
-      - Use a reasonable size (e.g `200M` or `512M`)
+      - Use a reasonable size (e.g `512M`)
       - Keep the current type `8300 (Linux filesystem)`
       - Give it the name `boot`
   3. Create root partition 
@@ -27,7 +27,13 @@ Now simply connect to the machine via ssh from remote and follow the next steps 
   4. Select `Write` to make the changes apply
   5. check the partitions with `lsblk`
       - note the root partitions name (e.g. /dev/sda2)
-
+ 
+#### Prepare the disks creating partions MBR ####
+- use `lsblk` to check disks and partitions and identify the disk (e.g. /dev/sda or /dev/nvme01...)
+- run "fdisk {disk}" and set the label to dos e.g `fdisk /dev/sda` 
+- hit `o` to create a new edmpty DOS partition table
+- hit `m` to write the partition table
+- the rest is similar as the uefi mode [above](https://github.com/matzzze/myArchInstallGuide/blob/main/README.md#Prepare-the-disks-by-creating-partitions-UEFI)
 
 
 #### Encrypt the root partition ####
