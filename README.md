@@ -92,8 +92,8 @@ This only works for UEFI
         - `mount /dev/sda1 /mnt/boot`
 3. run `lsblk` to make sure its fine
 4. If Uefi was selected create a efi dir in root and mount the efi partition to it:
-    - `mkdir /mnt/efi`
-    - `mount /dev/{efi partition} /mnt/efi`
+    - `mkdir /mnt/boot/EFI`
+    - `mount /dev/{efi partition} /mnt/boot/EFI`
 
 
 ## Basic System Installation
