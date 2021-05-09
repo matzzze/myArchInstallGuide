@@ -79,7 +79,7 @@ This only works for UEFI
 2. Create filesystem on root partition with "mkfs.ext4 /dev/mapper/{name of mapper}
     - the root partition has been encrypted so the mapper must be used!
     - `mkfs.ext4 /dev/mapper/cryptroot`
-3. If UEFI was selected, then format the EFI partition with `mkfs.fat -F32 /dev/{efi partition}
+3. If UEFI was selected, then format the EFI partition with `mkfs.fat -F32 /dev/{efi partition}`
 
 
 
@@ -163,7 +163,8 @@ This only works for UEFI
 - run `grub-mkconfig --output /boot/grub/grub.cfg`
 
 **Configure & Install Bootloader for UEFI**
-- run `grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=GRUB`
+- run `grub-install --target=x86_64-efi --efi-directory=/boot/EFI --boot-directory=/boot --bootloader-id=GRUB --recheck /dev/sda`
+- run `grub-mkconfig --output /boot/grub/grub.cfg`
 
 **Enable Networking and SSHD**
 - run `systemctl enable NetworkManager`
