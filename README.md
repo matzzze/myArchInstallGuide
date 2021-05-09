@@ -28,16 +28,23 @@ Now simply connect to the machine via ssh from remote and follow the next steps 
 This only works for UEFI
 - use `lsblk` to check disks and partitions and identify the disk (e.g. /dev/sda or /dev/nvme01...)
 - use cgdisk /dev/{diskname} to make partitioning: `cgdisk /dev/sda`
-  1. Create boot partition
+  1. Create EFI partition
+      - Select `New`
+      - Keep the first sector that is shown
+      - Use `100M` as size
+      - Use EF00 as type
+      - Give it the name `EFI`
+      - Select `Write` to write the partiton
+  2. Create boot partition
       - Select `New`
       - Keep the first sector that is shown
       - Use a reasonable size (e.g `512M`)
       - Keep the current type `8300 (Linux filesystem)`
       - Give it the name `boot`
+      - Select `Write` to write the partiton
   3. Create root partition 
       - Repeat the same as for step above but use entire filesystem and use the name `root` for the partition
-  4. Select `Write` to make the changes apply
-  5. check the partitions with `lsblk`
+  4. check the partitions with `lsblk`
       - note the root partitions name (e.g. /dev/sda2)
  
 #### Prepare the disks creating partions MBR ####
