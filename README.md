@@ -79,10 +79,11 @@ This only works for UEFI
 2. Create filesystem on root partition with "mkfs.ext4 /dev/mapper/{name of mapper}
     - the root partition has been encrypted so the mapper must be used!
     - `mkfs.ext4 /dev/mapper/cryptroot`
+3. If UEFI was selected, then format the EFI partition with `mkfs.fat -F32 /dev/{efi partition}
 
 
 
-#### Mount the new partitions (non UEFI) ####
+#### Mount the new partitions ####
 1. Mount the root partition by "mount /dev/mapper/{name of mapper} /mnt"
     - `mount /dev/mapper/cryptroot /mnt`
 2. Mount the boot partition
@@ -90,6 +91,9 @@ This only works for UEFI
     - mount the boot partition into the new folder with "mount /dev/{bootpartition} /mnt/boot"
         - `mount /dev/sda1 /mnt/boot`
 3. run `lsblk` to make sure its fine
+4. If Uefi was selected create a efi dir in root and mount the efi partition to it:
+    - `mkdir /mnt/efi`
+    - `mount /dev/{efi partition} /mnt/efi`
 
 
 ## Basic System Installation
@@ -159,6 +163,7 @@ This only works for UEFI
 - run `grub-mkconfig --output /boot/grub/grub.cfg`
 
 **Configure & Install Bootloader for UEFI**
+- run `grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=GRUB`
 
 **Enable Networking and SSHD**
 - run `systemctl enable NetworkManager`
@@ -168,6 +173,8 @@ This only works for UEFI
 - `exit` to get out of arch-chrooted environment
 - `umount -R /mnt/boot`
 - `umount -R /mnt`
+- if Uefi also `umount -R /efi`
+- reboot the machine
 
 ## Initial System Setup
 ### Prepare ###
