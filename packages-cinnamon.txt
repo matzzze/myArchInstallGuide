@@ -8,3 +8,4 @@ arc-gtk-theme
 papirus-icon-theme
 ttf-hack
 ttf-ubuntu-font-family
+xfce4-terminal
