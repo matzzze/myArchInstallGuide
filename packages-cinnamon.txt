@@ -6,3 +6,5 @@ lightdm-gtk-greeter-settings
 cinnamon
 arc-gtk-theme
 papirus-icon-theme
+ttf-hack
+ttf-ubuntu-font-family
