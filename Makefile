@@ -6,3 +6,6 @@ configure-cinnamon:
 
 bashmodify:
 	./consolemodify.sh
+
+install-essential:
+	sudo ./packages-essential.sh

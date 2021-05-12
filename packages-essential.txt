@@ -1,0 +1,12 @@
+firefox
+xed
+vlc
+keepassxc
+libreoffice-still
+bluez
+bluez-utils
+smbclient
+tlp
+s-tui
+pulseaudio-bluetooth
+pacman-contrib
