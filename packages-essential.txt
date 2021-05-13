@@ -10,3 +10,5 @@ tlp
 s-tui
 pulseaudio-bluetooth
 pacman-contrib
+eog
+arduino
