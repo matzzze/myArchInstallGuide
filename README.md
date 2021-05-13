@@ -1,16 +1,25 @@
 # myArchInstallGuide
-This is a summary of my personal arch installation that aims to easily re-install the system from scratch.
+This is a summary of my personal arch installation that aims to easily re-install the system from scratch and configure it to my needs.
+**Disclaimer**:
+Please note this is pretty noob stuff, so most likely a lot of errors are included.
+Feel free to use but use with caution and common sense.
 
-There are several chapters
+
+There are several chapters to get to the full system
 1. Preparation
     - This contains some vital preparation steps like formatting the disks and adding encryption
-    - There is no automation for this at the moment
+    - There is no automation for this at the moment over a script, so copy and paste is necessary
 2. Basic System Installation
     - This contains the base system installation
     - This brings a bootable archlinux with user account running network manager and accessible via ssh
-    - There is no automation for this at the moment
+    - There is no automation for this at the moment over a script, so copy and paste is necessary
 3. Initial System Setup
+    - This contains small modifications to the bashrc (adding ll as alias for ls -al, sudo autocomplete, search history with pgup/down)
+    - This is automated and can be called by make 
 4. Add Cinnamon Desktop
+    - Adds the cinnamon desktop, my preferred configuration of it, the arc-theme, papirus icon and a desktop background
+    - This is automated and can be called by make
+  
 
 
 ## Preparation
