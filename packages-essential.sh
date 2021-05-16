@@ -37,6 +37,6 @@ chown -R matze:users /home/matze/mnt
 if [ -z $(grep AutoSambaAdd /etc/fstab ) ]; then
     cp /etc/fstab /etc/fstab.beforeAutoSambaAdd
     echo "#AutoSambaAdd" >> /etc/fstab
-    echo "//192.168.0.2/matze /home/matze/mnt/matze cifs noauto,x-systemd.automount,credentials=/etc/samba/credentials/share,vers=3.0,iocharset=utf8,uid=matze,gid=users 0 0" >> /etc/fstab
-    echo "//192.168.0.2/common /home/matze/mnt/common cifs noauto,x-systemd.automount,credentials=/etc/samba/credentials/share,vers=3.0,iocharset=utf8,uid=matze,gid=users 0 0" >> /etc/fstab
+    echo "//192.168.1.101/matze /home/matze/mnt/matze cifs noauto,x-systemd.automount,credentials=/etc/samba/credentials/share,vers=3.0,iocharset=utf8,uid=matze,gid=users 0 0" >> /etc/fstab
+    echo "//192.168.1.101/common /home/matze/mnt/common cifs noauto,x-systemd.automount,credentials=/etc/samba/credentials/share,vers=3.0,iocharset=utf8,uid=matze,gid=users 0 0" >> /etc/fstab
 fi
