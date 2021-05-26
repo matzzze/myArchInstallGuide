@@ -197,3 +197,10 @@ This only works for UEFI
 **Clone**
 - cd into home dir
 - run `git clone https://github.com/matzzze/myArchInstallGuide.git` 
+
+**Install**
+- cd into new git repo `cd https://github.com/matzzze/myArchInstallGuide.git`
+- `make bashmodify` to mod the terminal
+- `make install-cinnamon` to install X server and cinnamon
+- `make configure-cinnamon` to configure cinnamon to my needs
+- `make install-essential` to get some more essential applications
