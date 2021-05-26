@@ -1,11 +1,11 @@
 # myArchInstallGuide
-This is a summary of my personal arch installation that aims to easily re-install the system from scratch and configure it to my needs.
+This is a summary of my personal arch installation that aims to be a guide to easily re-install the system from scratch and configure it to my needs.
 **Disclaimer**:
-Please note this is pretty noob stuff, so most likely a lot of errors are included.
-Feel free to use but use with caution and common sense.
+Please note this is pretty noob stuff, so most likely a lot of errors are included and problems are to be expected.
+Feel free to use but use with caution and common sense - as usual absolutely no warranty.
 
 
-There are several chapters to get to the full system
+There are several chapters to get to the full system intially setup
 1. Preparation
     - This contains some vital preparation steps like formatting the disks and adding encryption
     - There is no automation for this at the moment over a script, so copy and paste is necessary
@@ -15,9 +15,8 @@ There are several chapters to get to the full system
     - There is no automation for this at the moment over a script, so copy and paste is necessary
 3. Initial System Setup
     - This contains small modifications to the bashrc (adding ll as alias for ls -al, sudo autocomplete, search history with pgup/down)
-    - This is automated and can be called by make 
-4. Add Cinnamon Desktop
     - Adds the cinnamon desktop, my preferred configuration of it, the arc-theme, papirus icon and a desktop background
+    - Installs some apps that I consider necessary
     - This is automated and can be called by make
   
 
@@ -198,7 +197,8 @@ This only works for UEFI
 - cd into home dir
 - run `git clone https://github.com/matzzze/myArchInstallGuide.git` 
 
-**Install**
+
+### Installation ###
 - cd into new git repo `cd https://github.com/matzzze/myArchInstallGuide.git`
 - `make bashmodify` to mod the terminal
 - `make install-cinnamon` to install X server and cinnamon
