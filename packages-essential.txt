@@ -12,3 +12,8 @@ pulseaudio-bluetooth
 pacman-contrib
 eog
 arduino
+iproute2
+nmap
+synergy
+tcpdump
+mate-calc
