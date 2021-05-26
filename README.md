@@ -194,3 +194,6 @@ This only works for UEFI
   git config --global user.email "you@example.com"
   git config --global user.name "Your Name"
 ```
+**Clone**
+- cd into home dir
+- run `git clone https://github.com/matzzze/myArchInstallGuide.git` 
