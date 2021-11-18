@@ -18,4 +18,5 @@ synergy
 tcpdump
 mate-calc
 wireshark-qt
-gnome-connections
+remmina
+aribb24
