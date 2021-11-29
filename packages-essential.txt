@@ -20,3 +20,4 @@ mate-calc
 wireshark-qt
 remmina
 aribb24
+bind-tools
