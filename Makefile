@@ -8,7 +8,7 @@ bashmodify:
 	./consolemodify.sh
 
 configure-vim:
-    ./vim-modify.sh
+	./vim-modify.sh
 
 install-essential:
 	sudo ./packages-essential.sh
