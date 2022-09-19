@@ -7,5 +7,8 @@ configure-cinnamon:
 bashmodify:
 	./consolemodify.sh
 
+configure-vim:
+    ./vim-modify.sh
+
 install-essential:
 	sudo ./packages-essential.sh
