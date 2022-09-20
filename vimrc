@@ -65,3 +65,6 @@ set incsearch
 
 " open terminal below "
 cabbrev bt bo term
+
+" split a new file to the right"
+set splitright
