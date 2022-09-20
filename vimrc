@@ -68,3 +68,22 @@ cabbrev bt bo term
 
 " split a new file to the right"
 set splitright
+
+"change vim statuswindow"
+highlight StatuslineFilename ctermfg=Black ctermbg=grey
+highlight StatuslineModified ctermfg=Black ctermbg=darkgrey
+highlight StatuslineNumbers ctermfg=Black ctermbg=darkgrey
+
+set statusline=%#StatuslineFilename#   " Set color for file path
+set statusline+=%F                     " Full file path, at most 40 characters
+set statusline+=\                      " A space
+set statusline+=%#StatuslineModified#  " Set color for modified flag
+set statusline+=%m                     " Modified flag
+set statusline+=%#StatuslineFilename#  " Set color for the rest of the bar
+set statusline+=%=                     " Split the left and right sides
+set statusline+=%#StatuslineNumbers#   " Set color for line numbers
+set statusline+=%l                    " Line number
+set statusline+=\ \/\                  " A separator
+set statusline+=%L                     " Total number of lines
+set statusline+=\ \|\                  " A separator
+set statusline+=%-3c                    " Column number
