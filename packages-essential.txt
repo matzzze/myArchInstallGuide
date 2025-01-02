@@ -32,3 +32,4 @@ iperf
 imagemagick
 bash-completion
 alsa-utils
+lsof
