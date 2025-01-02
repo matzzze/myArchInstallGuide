@@ -34,3 +34,4 @@ bash-completion
 alsa-utils
 lsof
 smartmontools
+gnome-disk-utility
